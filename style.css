@@ -136,7 +136,7 @@ body.light .toggle::before{
 }
 body.light .digital-clock{
     position:absolute;
-    top: 60px;
+    top: 70px;
     font-family: consolas;
     cursor: pointer;
     transition: 0.5s;
@@ -147,7 +147,7 @@ body.light .digital-clock{
 }
 .digital-clock{
     position:absolute;
-    top: 60px;
+    top: 70px;
     font-family: consolas;
     cursor: pointer;
     transition: 0.5s;
