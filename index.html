@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Clock</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="clock">
+        <div class="hour">
+            <div class="hr" id="hr"></div>
+        </div>
+        <div class="min">
+            <div class="mn" id="mn"></div>
+        </div>
+        <div class="sec">
+            <div class="sc" id="sc"></div>
+        </div>
+    </div>
+   
+    <div class="toggle" onclick="toggleDarkMode()"></div>
+
+    <div class="digital-clock" id="digitalclock"></div>
+    <script type="text/javascript">
+        function toggleDarkMode(){
+            const body=document.querySelector('body');
+            body.classList.toggle('light');
+        }
+        
+        const deg=6;
+
+        const hr=document.querySelector('#hr');
+        const mn=document.querySelector('#mn');
+        const sc=document.querySelector('#sc');
+
+        
+        
+        setInterval(()=>{
+        
+        let day=new Date();
+        let hh=day.getHours()*30;
+        let mm=day.getMinutes()*deg;
+        let ss=day.getSeconds()*deg;
+
+        hr.style.transform = `rotateZ(${(hh)+(mm/12)}deg)`;
+        mn.style.transform = `rotateZ(${mm}deg)`;
+        sc.style.transform = `rotateZ(${ss}deg)`;
+        showTime();
+        });
+       
+        function showTime(){
+            let date=new Date();
+            let h=date.getHours();
+            let m=date.getMinutes();
+            let s=date.getSeconds();
+            var session="AM";
+            if(h==0){
+                h=12;
+            }
+            if(h>12){
+                h=h-12;
+                session="PM"
+            }
+            h=(h<10)?"0"+h:h;
+            m=(m<10)?"0"+m:m;
+            s=(s<10)?"0"+s:s;
+
+            var time=h+":"+m+":"+s+" "+session;
+            document.getElementById('digitalclock').innerHTML=time;
+
+        }
+    </script>
+</body>
+</html>
